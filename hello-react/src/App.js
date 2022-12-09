@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-import { Fragment } from 'react';
 import { Component } from 'react';
-import MyComponent from './MyComponent';
-import Counter from './Counter';
-import Say from './Say';
-import Loader from './Loader';
-
+import { Route, Routes, Link } from 'react-router-dom';
+import Home from './Home';
+import Vote from './Vote';
+import Like from './Like';
 class App extends Component {
   render() {
-    const name = "react";
     return (
-      <>
-        <div className='react'> {name} </div>
-        <MyComponent name='첫번째' favoriteNumber={3}>리액트</MyComponent>
-        <Counter />
-        <Say />
-        <Loader />
-      </>
+      <div>
+        <ul>
+          <li><Link to='/'>홈</Link></li>
+          <li><Link to='/vote'>투표</Link></li>
+        </ul>
+        <hr/>
+        <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/vote' element={<Vote/>} />
+          <Route path='/tour' element={<Vote/>} />
+          <Route path='/like/:item_id' element={<Like/>} />
+          <Route path='*' element={<div>페이지가 없습니다.</div>} />
+        </Routes>
+      </div>
     )
   }
 }
