@@ -29,6 +29,9 @@ def create_vote_message(db: Session, vote: schemas.VoteMessage, item_id: int):
         item_id=item_id
     )
     db.add(db_vote)
+    item = get_item(db, item_id)
+    item.vote = item.vote + 1
+    db.add(item)
     db.commit()
     db.refresh(db_vote)
     return db_vote

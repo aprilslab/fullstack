@@ -27,7 +27,7 @@ class Item(ItemBase):
 class ItemCreate(ItemBase):
     pass
 
-class VoteMessageCreate(ItemBase):
+class VoteMessageCreate(VoteMessageBase):
     pass
 
 class ItemResponse(BaseModel):
@@ -39,9 +39,3 @@ class ItemResponse(BaseModel):
 class ItemsResponse(BaseModel):
     link: dict
     data: List[ItemResponse]
-
-#내가 만든 응답값
-class VoteResponse(BaseModel):
-    type: str
-    id: int
-    data: VoteMessage
